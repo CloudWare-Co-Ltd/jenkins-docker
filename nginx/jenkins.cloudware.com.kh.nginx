@@ -1,6 +1,5 @@
 server {
     listen 80;
-    listen [::]:80;
     server_name jenkins.cloudware.com.kh www.jenkins.cloudware.com.kh;
     location / {
         proxy_pass http://localhost:1000;
