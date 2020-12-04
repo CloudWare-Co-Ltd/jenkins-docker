@@ -1,8 +1,13 @@
 server {
     listen 80;
     listen [::]:80;
-    server_name jenkins.cloudware.com.kh;
+    server_name jenkins.cloudware.com.kh www.jenkins.cloudware.com.kh;
     location / {
-        proxy_pass http://127.0.0.1:1000;
+        proxy_pass http://localhost:1000;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection 'upgrade';
+        proxy_set_header Host $host;
+        proxy_cache_bypass $http_upgrade;
     }
 }
